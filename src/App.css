@@ -1,0 +1,140 @@
+.app {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f1f1f1;
+  min-height: 100vh;
+}
+
+.navbar img {
+  width: 60px;
+  height: 53px;
+  margin-left: 80px;
+  margin-right: 80px;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.navbar ul {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  font-size: medium;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.hero {
+  background: linear-gradient(
+      to top,
+      rgba(24, 10, 10, 0.116),
+      rgba(7, 20, 8, 0.151),
+      rgba(54, 12, 12, 0.146)
+    ),
+    url("https://images.pexels.com/photos/32282781/pexels-photo-32282781.jpeg?_gl=1*b4qs0m*_ga*ODcxMTUyMDQ1LjE3NTU0Mjk1NzY.*_ga_8JE65Q40S6*czE3NTU0Mjk1NzYkbzEkZzEkdDE3NTU0Mjk2MTUkajIxJGwwJGgw")
+      no-repeat center center/cover;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  padding: 40px;
+  /* padding: 3rem 2rem; */
+  /* height: 100vh; */
+  text-align: center;
+}
+
+.hero .heroSub {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 27px;
+  font-weight: lighter;
+  /* width: 50%; */
+  margin-top: 70px;
+  align-self: center;
+  justify-self: center;
+  /* padding: 30px; */
+}
+
+.hero .heroSub .p1 {
+  font-size: 20px;
+  align-self: unset;
+  font-style: italic;
+}
+
+.hero .heroSub .p2 {
+  font-size: 15px;
+  align-self: unset;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.search-section {
+  background: #fff;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-form input,
+.search-form button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.flights-list {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flights-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.flights-list li {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #eaf0fa;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-btn {
+  background: #0053a0;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.book-btn:hover {
+  background: #003870;
+}
