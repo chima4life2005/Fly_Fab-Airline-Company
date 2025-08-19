@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import BookingPanel from "./BookingPanel";
+import RecommendedCards from "./RecommendedCards";
+import logo from "../src/Assets/fly_fab_logo_Version5.svg";
 // import EditableColumns from "./EditableColumns";
 
 const flightsData = [
@@ -54,7 +56,10 @@ function App() {
       <header className="hero">
         <nav className="navbar">
           <div>
-            <img src="/fly_fab_logo.svg" alt="Fly Fab Logo" />
+            <img
+              src={logo}
+              alt="C:\Users\User\airline-frontend\src\Assets\fly_fab_logo_Version5.svg"
+            />
           </div>
           <h1>FLY_FAB</h1>
           <ul>
@@ -68,19 +73,24 @@ function App() {
         <div className="heroSub">
           <h1 className="heroSub">Fly the WORLD with FLY_FAB</h1>
           <p className="p1">Welcome to FlyFab!</p>
+          <p className="p2">At FlyFab, your journey is our passion.</p>
           <p className="p2">
-            At FlyFab, your journey is our passion. Whether you're traveling for
-            business or pleasure, we're committed to making your experience
-            comfortable, enjoyable, and unforgettable. Discover world-class
-            service, innovative amenities, and a seamless booking experience as
-            you explore new destinations with us. Thank you for choosing
-            FlyFab—where your adventure begins!
+            Whether you're traveling for business or pleasure, we're committed
+            to making your experience comfortable, enjoyable, and unforgettable.
+          </p>
+          <p className="p2">
+            Discover world-class service, innovative amenities, and a seamless
+            booking experience as you explore new destinations with us.
+          </p>
+          <p className="p2">
+            Thank you for choosing FlyFab—where your adventure begins!
           </p>
         </div>
       </header>
 
       {/* Add BookingPanel here */}
       <BookingPanel />
+      <RecommendedCards />
       {/* <EditableColumns /> */}
 
       <section className="search-section">

@@ -1,0 +1,25 @@
+<svg width="370" height="300" viewBox="0 0 370 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle -->
+  <circle cx="185" cy="90" r="60" stroke="#4a5e6d" stroke-width="5" fill="none"/>
+  <!-- Letter F inside the circle -->
+  <text x="185" y="115" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="56" fill="#33d9ff" font-weight="bold" opacity="0.85" letter-spacing="2">F</text>
+  <!-- Stylized airplane shape -->
+  <g>
+    <!-- Fuselage/Body -->
+    <rect x="140" y="110" width="80" height="8" rx="4" fill="#33d9ff" stroke="#222" stroke-width="2" transform="rotate(-18 180 114)" />
+    <!-- Wings -->
+    <rect x="170" y="120" width="60" height="7" rx="3.5" fill="#33d9ff" stroke="#222" stroke-width="2" transform="rotate(-5 200 123)" />
+    <!-- Tail -->
+    <rect x="207" y="120" width="17" height="4" rx="2" fill="#33d9ff" stroke="#222" stroke-width="2" transform="rotate(-40 207 120)" />
+    <!-- Nose curve -->
+    <path d="M217 120 Q225 115 230 130" stroke="#222" stroke-width="2" fill="none"/>
+    <!-- Underbody curve -->
+    <path d="M140 115 Q140 135 200 150" stroke="#222" stroke-width="3" fill="none"/>
+    <!-- Engine/fin -->
+    <rect x="210" y="128" width="8" height="3" rx="1.5" fill="#222" />
+  </g>
+  <!-- FLY_FAB text -->
+  <text x="185" y="220" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="44" fill="#33d9ff" stroke="#222" stroke-width="2" font-weight="bold" letter-spacing="6">FLY_FAB</text>
+  <!-- FLY RIGHT slogan -->
+  <text x="185" y="248" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="17" fill="#222" font-weight="bold" letter-spacing="5" opacity="0.7">FLY RIGHT</text>
+</svg>

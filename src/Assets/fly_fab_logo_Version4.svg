@@ -1,0 +1,55 @@
+<svg width="364" height="296" viewBox="0 0 364 296" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Optional grid background -->
+  <rect width="364" height="296" fill="#f8f8f8"/>
+  <!-- Main circle -->
+  <circle cx="182" cy="80" r="65" stroke="#fff" stroke-width="4" fill="none"/>
+  <!-- Neon "F" -->
+  <text x="182" y="110" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-size="56" font-weight="bold"
+        fill="#fff" stroke="#ff3c3c" stroke-width="2" filter="url(#neon)">
+    F
+  </text>
+  <!-- Airplane outline -->
+  <g>
+    <path d="M110 138 Q160 120 210 138 Q170 135 155 175 Q170 145 220 145 Q185 145 175 170"
+          fill="none" stroke="#fff" stroke-width="4"/>
+    <!-- Fuselage -->
+    <rect x="135" y="135" width="95" height="8" rx="4" fill="#fff" stroke="#fff" stroke-width="2" transform="rotate(-16 182 139)"/>
+    <!-- Tail fin -->
+    <rect x="200" y="135" width="15" height="4" rx="2" fill="#fff" stroke="#fff" stroke-width="2" transform="rotate(-35 200 135)"/>
+    <!-- Wings -->
+    <rect x="150" y="148" width="40" height="7" rx="3.5" fill="#fff" stroke="#fff" stroke-width="2" transform="rotate(-5 170 151)"/>
+  </g>
+  <!-- FLY_FAB (blue text with red shadow) -->
+  <text x="182" y="220" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-size="44" font-weight="bold"
+        fill="#2478ff" stroke="#fff" stroke-width="2">
+    FLY_FAB
+  </text>
+  <text x="182" y="220" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-size="44" font-weight="bold"
+        fill="none" stroke="#ff3c3c" stroke-width="5" opacity="0.45">
+    FLY_FAB
+  </text>
+  <!-- FLY RIGHT (red text with white shadow) -->
+  <text x="182" y="253" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-size="24" font-weight="bold"
+        fill="#ff3c3c" stroke="#fff" stroke-width="2" letter-spacing="6">
+    FLY RIGHT
+  </text>
+  <text x="182" y="253" text-anchor="middle" font-family="Arial Black, Arial, sans-serif"
+        font-size="24" font-weight="bold"
+        fill="none" stroke="#fff" stroke-width="5" opacity="0.5" letter-spacing="6">
+    FLY RIGHT
+  </text>
+  <!-- Neon filter (optional) -->
+  <defs>
+    <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+</svg>

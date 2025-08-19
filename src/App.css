@@ -48,7 +48,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 65vh;
   color: white;
   padding: 40px;
   /* padding: 3rem 2rem; */
@@ -70,13 +70,17 @@
 
 .hero .heroSub .p1 {
   font-size: 20px;
-  align-self: unset;
+  /* justify-content: start; */
+  justify-self: start;
+  /* align-items: start; */
   font-style: italic;
 }
 
 .hero .heroSub .p2 {
   font-size: 15px;
-  align-self: unset;
+  /* justify-content: start; */
+  justify-self: start;
+  /* align-items: start; */
   font-style: italic;
   margin-top: 10px;
 }
