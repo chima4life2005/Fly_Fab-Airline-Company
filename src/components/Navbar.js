@@ -14,6 +14,7 @@ const Navbar = () => (
     <Link to="/book-flight">Book a Flight</Link>
     <Link to="/checkin">Online Check-In</Link>
     <Link to="/about">About Us</Link>
+    {/* <Link to="/book-your-flight">Book Your Flight</Link> */}
   </nav>
 );
 

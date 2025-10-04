@@ -1,0 +1,299 @@
+.book-flight-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem 1rem;
+  background: #f9faff;
+  min-height: 100vh;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #0a3961;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: #4a4a4a;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  color: #0a3961;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.flight-list-section {
+  margin-bottom: 2rem;
+}
+
+.flight-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.flight-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.09);
+  width: 260px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: border 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.flight-card.selected {
+  border: 2px solid #0072e5;
+  box-shadow: 0 4px 16px rgba(0, 114, 229, 0.15);
+}
+
+.flight-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.flight-info {
+  padding: 1rem 1rem 0.5rem 1rem;
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.flight-info h4 {
+  margin: 0.2rem 0 0.4rem 0;
+  font-size: 1.13rem;
+}
+.arrow {
+  font-weight: bold;
+  color: #0072e5;
+  margin: 0 0.18rem;
+}
+
+.select-flight-btn {
+  background: #0072e5;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  margin-top: 0.4rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.18s;
+}
+
+.select-flight-btn:hover {
+  background: #0053a0;
+}
+
+.booking-section {
+  background: #eaf0fa;
+  margin: 2rem auto 0 auto;
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  max-width: 440px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-form label {
+  font-size: 1rem;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.booking-form input,
+.booking-form select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: 1px solid #b0c4de;
+  background: #fff;
+  outline: none;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  border-color: #0072e5;
+}
+
+.confirm-btn {
+  background: #0072e5;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  transition: background 0.18s;
+}
+
+.confirm-btn:disabled {
+  background: #b0c4de;
+}
+
+.confirm-btn:hover:not(:disabled) {
+  background: #0053a0;
+}
+
+.error-msg {
+  color: #c00;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.6rem;
+  font-weight: 600;
+}
+
+/* Confirmation Page */
+.booking-confirmation {
+  margin: 3rem auto 2rem auto;
+  max-width: 440px;
+  background: #d4edda;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+  text-align: center;
+}
+
+.booking-confirmation h2 {
+  color: #0072e5;
+  margin-bottom: 1rem;
+}
+.booking-confirmation p {
+  margin: 0.4rem 0;
+  font-size: 1.04rem;
+}
+
+/* Checkin Page */
+.checkin-page {
+  max-width: 440px;
+  margin: 3rem auto 2rem auto;
+  background: #eaf0fa;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+  text-align: center;
+}
+.checkin-page h2 {
+  color: #0072e5;
+  margin-bottom: 1rem;
+}
+.checkin-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  align-items: center;
+}
+.checkin-page label {
+  font-size: 1rem;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: left;
+}
+.checkin-page input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: 1px solid #b0c4de;
+  background: #fff;
+  outline: none;
+  width: 100%;
+}
+.checkin-page button {
+  background: #0072e5;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+  transition: background 0.18s;
+  width: 100%;
+}
+.checkin-page button:hover {
+  background: #0053a0;
+}
+.checkin-page .confirmation {
+  color: #0072e5;
+  background: #d4edda;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+}
+.checkin-page .error {
+  color: #c00;
+  background: #fff2f2;
+  font-weight: 600;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .flight-list {
+    gap: 0.7rem;
+  }
+  .flight-card {
+    width: 48vw;
+    min-width: 180px;
+    max-width: 340px;
+  }
+  .booking-section,
+  .booking-confirmation,
+  .checkin-page {
+    max-width: 96vw;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .book-flight-page {
+    padding: 0.5rem;
+  }
+  .flight-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .flight-card {
+    width: 98vw;
+    min-width: 160px;
+    max-width: 99vw;
+  }
+  .booking-section,
+  .booking-confirmation,
+  .checkin-page {
+    max-width: 99vw;
+    padding: 0.6rem 0.3rem;
+  }
+}

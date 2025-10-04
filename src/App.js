@@ -11,6 +11,7 @@ import RecommendedCards from "./RecommendedCards";
 import TravelGuide from "./TravelGuide";
 import HotelBooking from "./HotelBooking";
 import SpecialAssistance from "./SpecialAssistance";
+import BookFlight from "./BookFlight";
 import AirlineNewsletter from "./AirlineNewsletter";
 // import ContactPage from "./ContactPage";
 import BaggageServices from "./BaggageServices";
@@ -88,6 +89,7 @@ function App() {
         {/* <Route path="/contact" element={<ContactPage />} /> */}
         <Route path="/baggage-services" element={<BaggageServices />} />
         <Route path="/special-assistance" element={<SpecialAssistance />} />
+        <Route path="/book" element={<BookFlight />} />
         <Route path="/newsletter" element={<AirlineNewsletter />} />
         <Route
           path="/airline-services-awards"
