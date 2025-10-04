@@ -51,14 +51,13 @@ const cars = [
   },
   {
     name: "Tesla Model S",
-    image:
-      "https://images.unsplash.com/photo-1511391403515-ec2a0b6ce9a5?auto=format&fit=crop&w=400&q=80",
+    image: "https://etimg.etb2bimg.com/photo/98629540.cms",
     price: 380,
   },
   {
     name: "Maserati Quattroporte",
     image:
-      "https://images.unsplash.com/photo-1517949908119-4e8e7e5d0f5a?auto=format&fit=crop&w=400&q=80",
+      "https://vehicle-images.dealerinspire.com/29d7-110009433/thumbnails/large/ZAM56YRM5RX451191/af8e7778b25edce19f8d3bbff032e6e1.jpg",
     price: 370,
   },
 ];
