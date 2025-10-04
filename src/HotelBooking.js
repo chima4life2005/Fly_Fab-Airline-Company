@@ -199,6 +199,7 @@ function ReceiptModal({ hotel, booking, onClose }) {
         <p>
           Thank you, <strong>{booking.name}</strong>.<br />
           Your reservation at <strong>{hotel.name}</strong> is successful.
+          Please!!! present your booking receipt of payment at the Reception
         </p>
         <img
           src={hotel.image}

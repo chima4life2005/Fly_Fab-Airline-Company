@@ -191,9 +191,10 @@ function ReceiptModal({ car, payment, onClose }) {
   return (
     <div style={modalBackdrop}>
       <div style={modalStyle}>
-        <h2>Payment Successful!</h2>
+        <h2>Payment Successful!!!</h2>
         <p>
-          Thank you, <strong>{payment.name}</strong>.<br />
+          Thank you, Please present your receipt of payment at the Dealership!{" "}
+          <strong>{payment.name}</strong>.<br />
           You have rented <strong>{car.name}</strong>.
         </p>
         <img
