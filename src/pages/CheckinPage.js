@@ -1,50 +1,26 @@
 import React, { useState } from "react";
-import { flights } from "./BookingPage"; // Or import your flights data
 
-const CheckinPage = () => {
+const CheckinPage = ({ bookings }) => {
   const [flightNumber, setFlightNumber] = useState("");
   const [passengerName, setPassengerName] = useState("");
   const [checkedIn, setCheckedIn] = useState(false);
   const [match, setMatch] = useState(null);
-  // In CheckinPage.js
-  const CheckinPage = ({ bookings }) => {
-    const [flightNumber, setFlightNumber] = useState("");
-    const [passengerName, setPassengerName] = useState("");
-    const [checkedIn, setCheckedIn] = useState(false);
-    const [match, setMatch] = useState(null);
-
-    const handleCheckin = (e) => {
-      e.preventDefault();
-      // Only allow if booking exists
-      const booking = bookings.find(
-        (b) =>
-          b.flightNumber === flightNumber &&
-          b.passengerName.toLowerCase() === passengerName.toLowerCase()
-      );
-      if (booking) {
-        setMatch(booking);
-        setCheckedIn(true);
-      } else {
-        setMatch(null);
-        setCheckedIn(false);
-        alert("No such booking found. Please check details and try again.");
-      }
-    };
-    // ...rest of code...
-  };
 
   const handleCheckin = (e) => {
     e.preventDefault();
-    // Find matching flight
-    const matchingFlight = flights.find((f) => f.flightNumber === flightNumber);
-
-    if (matchingFlight && passengerName.trim()) {
-      setMatch(matchingFlight);
+    // Find booking with exact flight number and passenger name (case-insensitive)
+    const booking = bookings.find(
+      (b) =>
+        b.flightNumber?.toLowerCase() === flightNumber.toLowerCase() &&
+        b.passengerName?.toLowerCase() === passengerName.toLowerCase()
+    );
+    if (booking) {
+      setMatch(booking);
       setCheckedIn(true);
     } else {
       setMatch(null);
       setCheckedIn(false);
-      alert("Flight not found or name missing.");
+      alert("No such booking found. Please check details and try again.");
     }
   };
 
@@ -101,24 +77,35 @@ const CheckinPage = () => {
         <div style={{ marginTop: 24 }}>
           <h3 style={{ color: "#28a745" }}>Check-in Successful!</h3>
           <div>
-            <strong>Passenger:</strong> {passengerName}
+            <strong>Passenger:</strong> {match.passengerName}
             <br />
             <strong>Flight:</strong> {match.flightNumber}
             <br />
-            <strong>Route:</strong> {match.departure} → {match.destination}
-            <br />
-            <strong>Date:</strong> {match.date}
+            {match.departure && match.destination && (
+              <>
+                <strong>Route:</strong> {match.departure} → {match.destination}
+                <br />
+              </>
+            )}
+            {match.date && (
+              <>
+                <strong>Date:</strong> {match.date}
+                <br />
+              </>
+            )}
           </div>
-          <img
-            src={match.img}
-            alt="Flight"
-            style={{
-              marginTop: 18,
-              borderRadius: 8,
-              width: "100%",
-              maxWidth: 260,
-            }}
-          />
+          {match.img && (
+            <img
+              src={match.img}
+              alt="Flight"
+              style={{
+                marginTop: 18,
+                borderRadius: 8,
+                width: "100%",
+                maxWidth: 260,
+              }}
+            />
+          )}
           <p style={{ color: "#069", marginTop: 16 }}>
             Enjoy your flight! Your boarding pass will be sent to your email.
           </p>
