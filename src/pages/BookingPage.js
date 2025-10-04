@@ -20,6 +20,7 @@ export const flights = [
     seatsAvailable: 5,
     price: 120,
     img: flightImages[0],
+    totalSeats: 20,
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const flights = [
     seatsAvailable: 3,
     price: 150,
     img: flightImages[1],
+    totalSeats: 20,
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ export const flights = [
     seatsAvailable: 10,
     price: 130,
     img: flightImages[2],
+    totalSeats: 20,
   },
   {
     id: 4,
@@ -50,6 +53,7 @@ export const flights = [
     seatsAvailable: 10,
     price: 700,
     img: flightImages[3],
+    totalSeats: 30,
   },
   {
     id: 5,
@@ -60,6 +64,7 @@ export const flights = [
     seatsAvailable: 5,
     price: 300,
     img: flightImages[4],
+    totalSeats: 15,
   },
   {
     id: 6,
@@ -70,6 +75,7 @@ export const flights = [
     seatsAvailable: 13,
     price: 800,
     img: flightImages[5],
+    totalSeats: 25,
   },
   {
     id: 7,
@@ -80,6 +86,7 @@ export const flights = [
     seatsAvailable: 7,
     price: 1000,
     img: flightImages[6],
+    totalSeats: 30,
   },
   {
     id: 8,
@@ -89,17 +96,41 @@ export const flights = [
     date: "2025-10-16",
     seatsAvailable: 4,
     price: 850,
-    img: flightImages[7],
+    img: flightImages[0],
+    totalSeats: 22,
   },
 ];
 
-const BookingPage = ({ addBooking }) => {
+// Helper to generate TicketId (unique for each booking)
+const generateTicketId = () =>
+  "TICKET-" +
+  Math.random().toString(36).substring(2, 8).toUpperCase() +
+  "-" +
+  Date.now().toString().slice(-5);
+
+// Helper to generate seat numbers (simple: "1A", "1B", ... "5A", etc.)
+function generateSeatMap(totalSeats) {
+  // Returns array like ["1A","1B",...,"1F","2A",...]
+  const rows = Math.ceil(totalSeats / 6);
+  const seatLetters = ["A", "B", "C", "D", "E", "F"];
+  let seats = [];
+  for (let row = 1; row <= rows; row++) {
+    for (let s = 0; s < 6 && seats.length < totalSeats; s++) {
+      seats.push(`${row}${seatLetters[s]}`);
+    }
+  }
+  return seats;
+}
+
+const BookingPage = ({ addBooking, allBookings = [] }) => {
   const [departure, setDeparture] = useState("");
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
   const [passengers, setPassengers] = useState(1);
   const [selectedFlight, setSelectedFlight] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [seatError, setSeatError] = useState("");
 
   // Payment states
   const [showPayment, setShowPayment] = useState(false);
@@ -111,6 +142,7 @@ const BookingPage = ({ addBooking }) => {
 
   // Receipt state
   const [showReceipt, setShowReceipt] = useState(false);
+  const [ticketId, setTicketId] = useState("");
 
   const availableFlights = flights.filter(
     (flight) =>
@@ -122,9 +154,43 @@ const BookingPage = ({ addBooking }) => {
 
   const selectedFlightObj = flights.find((f) => f.id === selectedFlight);
 
+  // Find already booked seats for this flight
+  let bookedSeats = [];
+  if (selectedFlightObj && allBookings && allBookings.length > 0) {
+    bookedSeats = allBookings
+      .filter(
+        (b) => b.flightId === selectedFlightObj.id && Array.isArray(b.seats)
+      )
+      .flatMap((b) => b.seats);
+  }
+
+  // Generate seat map for this flight
+  const seatMap = selectedFlightObj
+    ? generateSeatMap(selectedFlightObj.totalSeats || 20)
+    : [];
+
+  const handleSelectSeat = (seat) => {
+    setSeatError("");
+    // Deselect if already selected
+    if (selectedSeats.includes(seat)) {
+      setSelectedSeats(selectedSeats.filter((s) => s !== seat));
+    } else {
+      if (selectedSeats.length < passengers) {
+        setSelectedSeats([...selectedSeats, seat]);
+      } else {
+        setSeatError(`You can select up to ${passengers} seat(s).`);
+      }
+    }
+  };
+
   const handleConfirmBooking = () => {
+    if (selectedSeats.length !== passengers) {
+      setSeatError(`Please select ${passengers} seat(s).`);
+      return;
+    }
     setConfirmed(true);
     setShowPayment(true); // Show payment form
+    setSeatError("");
   };
 
   const handlePayment = (e) => {
@@ -133,13 +199,19 @@ const BookingPage = ({ addBooking }) => {
     setPaymentSuccess(true);
     setShowReceipt(true);
 
+    const newTicketId = generateTicketId();
+    setTicketId(newTicketId);
+
     if (addBooking && selectedFlightObj) {
       addBooking({
+        ticketId: newTicketId,
         flightId: selectedFlightObj.id,
         flightNumber: selectedFlightObj.flightNumber,
         passengerName: cardName,
-        date,
+        date: selectedFlightObj.date,
         passengers,
+        seats: selectedSeats,
+        price: selectedFlightObj.price * passengers,
       });
     }
   };
@@ -159,6 +231,9 @@ const BookingPage = ({ addBooking }) => {
     setExpiry("");
     setCvv("");
     setShowReceipt(false);
+    setSelectedSeats([]);
+    setTicketId("");
+    setSeatError("");
   };
 
   return (
@@ -208,7 +283,10 @@ const BookingPage = ({ addBooking }) => {
           >
             ✅ Payment Successful!
           </p>
-          <div style={{ marginBottom: "20px" }}>
+          <div style={{ marginBottom: "12px" }}>
+            <strong>Ticket ID:</strong> {ticketId}
+          </div>
+          <div style={{ marginBottom: "12px" }}>
             <strong>Passenger Name:</strong> {cardName}
           </div>
           <div>
@@ -225,6 +303,9 @@ const BookingPage = ({ addBooking }) => {
           </div>
           <div>
             <strong>Tickets:</strong> {passengers}
+          </div>
+          <div>
+            <strong>Seats:</strong> {selectedSeats.join(", ")}
           </div>
           <div style={{ margin: "12px 0" }}>
             <strong>Total Paid:</strong>{" "}
@@ -268,7 +349,6 @@ const BookingPage = ({ addBooking }) => {
               gap: "18px",
             }}
           >
-            {/* ...form fields as before... */}
             <label style={{ fontWeight: 500 }}>
               Departure:
               <select
@@ -340,7 +420,10 @@ const BookingPage = ({ addBooking }) => {
               <input
                 type="number"
                 value={passengers}
-                onChange={(e) => setPassengers(Number(e.target.value))}
+                onChange={(e) => {
+                  setPassengers(Number(e.target.value));
+                  setSelectedSeats([]); // reset seats if passenger count changes
+                }}
                 min={1}
                 max={10}
                 required
@@ -422,6 +505,8 @@ const BookingPage = ({ addBooking }) => {
                         setConfirmed(false);
                         setShowPayment(false);
                         setPaymentSuccess(false);
+                        setSelectedSeats([]);
+                        setSeatError("");
                       }}
                       disabled={selectedFlight === flight.id}
                       style={{
@@ -461,8 +546,73 @@ const BookingPage = ({ addBooking }) => {
             </p>
           )}
 
-          {selectedFlight && !showPayment && (
-            <div style={{ marginTop: 32, textAlign: "center" }}>
+          {/* Seat selection block */}
+          {selectedFlight && !showPayment && selectedFlightObj && (
+            <div
+              style={{
+                marginTop: 32,
+                background: "#fff",
+                borderRadius: 12,
+                padding: 24,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+                maxWidth: 500,
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            >
+              <h3 style={{ color: "#05668d", marginBottom: 16 }}>
+                Select Seat{passengers > 1 ? "s" : ""}
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(6, 1fr)",
+                  gap: 6,
+                  marginBottom: 12,
+                }}
+              >
+                {seatMap.map((seat) => {
+                  const isBooked = bookedSeats.includes(seat);
+                  const isSelected = selectedSeats.includes(seat);
+                  return (
+                    <button
+                      key={seat}
+                      type="button"
+                      onClick={() => !isBooked && handleSelectSeat(seat)}
+                      disabled={isBooked}
+                      style={{
+                        padding: "7px 0",
+                        borderRadius: 6,
+                        border: isBooked
+                          ? "1.5px solid #b2bec3"
+                          : isSelected
+                          ? "2px solid #28a745"
+                          : "1.5px solid #05668d",
+                        background: isBooked
+                          ? "#f1f2f6"
+                          : isSelected
+                          ? "#d4f5e9"
+                          : "#eaf6ff",
+                        color: isBooked ? "#aaa" : "#05668d",
+                        fontWeight: isSelected ? 700 : 500,
+                        cursor: isBooked ? "not-allowed" : "pointer",
+                        minWidth: 0,
+                        fontSize: "0.95rem",
+                      }}
+                    >
+                      {seat}
+                    </button>
+                  );
+                })}
+              </div>
+              <div style={{ marginBottom: 8, color: "#444" }}>
+                Selected: {selectedSeats.join(", ") || "None"}
+              </div>
+              {seatError && (
+                <div style={{ color: "#d7263d", marginBottom: 8 }}>
+                  {seatError}
+                </div>
+              )}
               <div style={{ marginBottom: "18px", fontSize: "1.15rem" }}>
                 <strong>Total Price: </strong>
                 <span style={{ color: "#05668d", fontWeight: "bold" }}>
