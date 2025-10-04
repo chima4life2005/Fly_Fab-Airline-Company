@@ -7,23 +7,27 @@ import ancillaryImg from "./Assets/bnr_ancillary_240301bi.webp";
 const cards = [
   {
     label: "Domestic Flights",
-    image: ancillaryImg,
+    image:
+      "https://www.itcsa.es/wp-content/uploads/Airport-terminal-850x491.jpg",
     title: "Check it now",
     description: "The cheapest days to fly at FLYFAB Airline",
   },
   {
     label: "International Flights",
-    image: "https://www.ana.co.jp/en/jp/promotions/images/a350.png",
+    image:
+      "https://images.unsplash.com/photo-1653795163859-9ee39ecc6d62?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWlycG9ydHN8ZW58MHx8MHx8fDA%3D",
     title: "A350-1000 Operating on select routes in the world!",
   },
   {
     label: "Domestic Flights",
-    image: "https://www.ana.co.jp/en/jp/promotions/images/domestic-book.png",
+    image:
+      "https://slcairport.com/assets/Uploads/Elements/PhotoGallery/SLCIA-Interior/Passengers-in-Terminal.jpg",
     title: "Find Domestic Flights and Book",
   },
   {
     label: "International Flights",
-    image: ancillaryImg,
+    image:
+      "https://cdn.punchng.com/wp-content/uploads/2025/07/01235724/Flight-delays.jpg",
     title: "Customize your journey for greater comfort with optional services",
   },
 ];
