@@ -35,6 +35,27 @@
   cursor: pointer;
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .navbar img {
+    margin-left: 0;
+    margin-right: 0;
+    width: 45px;
+    height: 40px;
+  }
+  .navbar ul {
+    flex-direction: column;
+    gap: 16px;
+    font-size: small;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
 .hero {
   background: linear-gradient(
       to top,
