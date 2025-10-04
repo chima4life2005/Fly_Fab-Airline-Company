@@ -6,14 +6,6 @@
   min-height: 100vh;
 }
 
-.navbar img {
-  width: 60px;
-  height: 53px;
-  margin-left: 80px;
-  margin-right: 80px;
-  cursor: pointer;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -23,9 +15,17 @@
   padding: 1rem 2rem;
 }
 
+.navbar img {
+  width: 60px;
+  height: 53px;
+  margin-left: 80px;
+  margin-right: 80px;
+  cursor: pointer;
+  transition: width 0.2s, height 0.2s, margin 0.2s;
+}
+
 .navbar ul {
   display: flex;
-  justify-items: center;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -33,29 +33,36 @@
   font-size: medium;
   font-style: italic;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .navbar img {
-    margin-left: 0;
-    margin-right: 0;
-    width: 45px;
-    height: 40px;
-  }
-  .navbar ul {
-    flex-direction: column;
-    gap: 16px;
-    font-size: small;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
+nav.navbar a,
+.navbar ul li a,
+a {
+  color: inherit;
+  text-decoration: none;
+  font-style: italic;
 }
+
+a {
+  color: #222;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0077b6;
+  text-decoration: underline;
+}
+
+.hero,
+.heroSub,
+.navbar,
+.navbar ul li a {
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
 .hero {
   background: linear-gradient(
       to top,
@@ -96,42 +103,6 @@
   font-size: 15px;
   font-style: italic;
   margin-top: 10px;
-}
-
-/* Responsive styles */
-@media (max-width: 900px) {
-  .hero {
-    height: 45vh;
-    padding: 24px;
-  }
-  .hero .heroSub {
-    font-size: 22px;
-    margin-top: 35px;
-  }
-  .hero .heroSub .p1 {
-    font-size: 17px;
-  }
-  .hero .heroSub .p2 {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero {
-    height: 32vh;
-    padding: 12px;
-  }
-  .hero .heroSub {
-    font-size: 16px;
-    margin-top: 18px;
-  }
-  .hero .heroSub .p1 {
-    font-size: 13px;
-  }
-  .hero .heroSub .p2 {
-    font-size: 11px;
-    margin-top: 6px;
-  }
 }
 
 .search-section {
@@ -188,43 +159,113 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
 .book-btn:hover {
   background: #003870;
 }
-/* Remove underline and set color for navbar links */
-nav.navbar a {
-  color: inherit; /* Inherit color from parent (e.g., white) */
-  text-decoration: none; /* Remove underline */
-  font-style: italic; /* Optional: keep italic if you wish */
+
+/* RESPONSIVE STYLES */
+
+/* Tablet and below */
+@media (max-width: 900px) {
+  .hero {
+    height: 45vh;
+    padding: 24px;
+  }
+  .hero .heroSub {
+    font-size: 22px;
+    margin-top: 35px;
+  }
+  .hero .heroSub .p1 {
+    font-size: 17px;
+  }
+  .hero .heroSub .p2 {
+    font-size: 13px;
+  }
+  .search-section,
+  .flights-list {
+    max-width: 95vw;
+    padding: 1rem;
+  }
 }
 
-/* Or if you want to target all nav links specifically */
-.navbar ul li a {
-  color: inherit;
-  text-decoration: none;
-}
-/* General link reset for navigation and cards */
-a {
-  color: inherit; /* Use the parent's color, e.g., black or white */
-  text-decoration: none; /* Remove underline */
+/* Mobile: stack navbar, shrink logo, hero, fonts */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+    align-items: flex-start;
+  }
+  .navbar img {
+    margin-left: 0;
+    margin-right: 0;
+    width: 45px;
+    height: 40px;
+  }
+  .navbar ul {
+    flex-direction: column;
+    gap: 16px;
+    font-size: small;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: flex-start;
+  }
+  .hero {
+    height: 35vh;
+    padding: 12px;
+  }
+  .hero .heroSub {
+    font-size: 16px;
+    margin-top: 18px;
+  }
+  .hero .heroSub .p1 {
+    font-size: 13px;
+  }
+  .hero .heroSub .p2 {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+  .search-section,
+  .flights-list {
+    max-width: 98vw;
+    padding: 0.5rem;
+  }
 }
 
-/* Optional: If you want a specific color, e.g., black */
-a {
-  color: #222; /* Or whatever color you prefer */
-  text-decoration: none;
-}
-
-/* Optional: On hover, you can add a different style if desired */
-a:hover {
-  color: #0077b6; /* Example: dark blue on hover */
-  text-decoration: underline; /* Or keep none for no underline */
-}
-/* Add to your App.css or relevant CSS file */
-.hero,
-.heroSub,
-.navbar,
-.navbar ul li a {
-  color: #fff; /* white */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* black shadow for contrast */
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .hero {
+    height: 25vh;
+    padding: 6px;
+  }
+  .hero .heroSub {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .hero .heroSub .p1 {
+    font-size: 11px;
+  }
+  .hero .heroSub .p2 {
+    font-size: 9px;
+    margin-top: 4px;
+  }
+  .navbar img {
+    width: 30px;
+    height: 25px;
+  }
+  .navbar ul {
+    gap: 10px;
+    font-size: x-small;
+  }
+  .search-section,
+  .flights-list {
+    padding: 0.25rem;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  .flights-list li {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
 }
