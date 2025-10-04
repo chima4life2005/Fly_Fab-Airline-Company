@@ -1,34 +1,37 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import "./ConfirmationPage.css";
 
 function ConfirmationPage() {
   const location = useLocation();
-  const navigate = useNavigate();
   const booking = location.state?.booking;
 
   if (!booking) {
-    return <div>No booking found.</div>;
+    return <p>No booking information found.</p>;
   }
 
   return (
-    <div className="booking-confirmation">
+    <div className="confirmation-page">
       <h2>Booking Confirmed!</h2>
-      <p>Passenger: {booking.passenger.name}</p>
-      <p>Email: {booking.passenger.email}</p>
       <p>
-        Flight: {booking.flight.origin} → {booking.flight.destination}
+        Thank you, <strong>{booking.passenger.name}</strong>!
       </p>
-      <p>Date: {booking.flight.date}</p>
       <p>
-        Flight Number (for check-in):{" "}
+        Your flight from <strong>{booking.flight.origin}</strong> to{" "}
+        <strong>{booking.flight.destination}</strong> is booked.
+      </p>
+      <p>
+        Date: <strong>{booking.flight.date}</strong>
+      </p>
+      <p>
+        Seat: <strong>{booking.seat}</strong>
+      </p>
+      <p>
+        Your flight number for check-in:{" "}
         <strong>{booking.flight.uniqueFlightNumber}</strong>
       </p>
-      <p>Seat: {booking.seat}</p>
-      <p>Tickets: {booking.passenger.ticketCount}</p>
-      <p>
-        Total Price: ${booking.flight.price * booking.passenger.ticketCount}
-      </p>
-      <button onClick={() => navigate("/checkin")}>Go to Check-in</button>
+      <p>Check-in with your name and this flight number.</p>
+      {/* Add more details or a button if needed */}
     </div>
   );
 }
